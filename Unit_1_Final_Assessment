@@ -1,0 +1,47 @@
+#The following assessments allow you to practice the probability and coding skills you've learned in Section 1: Discrete Probability. 
+#You will likely find it useful to try out code to answer the problems using R on your own machine.
+#You will benefit from using the following libraries:
+
+library(gtools)
+library(tidyverse)
+
+
+
+
+#Question 1: Olympic running
+#In the 200m dash finals in the Olympics, 8 runners compete for 3 medals (order matters). In the 2012 Olympics, 3 of the 8 runners were from Jamaica 
+#and the other 5 were from different countries. The three medals were all won by Jamaica (Usain Bolt, Yohan Blake, and Warren Weir).
+#Use the information above to help you answer the following four questions.
+
+Question 1a: How many different ways can the 3 medals be distributed across 8 runners?
+Answer: 336
+Work: 8 * 7 * 6
+
+
+Question 1b: How many different ways can the three medals be distributed among the 3 runners from Jamaica?
+Answer: 6
+Work: 3 * 1 * 1
+
+
+Question 1c: What is the probability that all 3 medals are won by Jamaica?
+Answer: 0.02
+Work: 6 / 336
+
+
+Task: Run a Monte Carlo simulation on this vector representing the countries of the 8 runners in this race:
+
+runners <- c("Jamaica", "Jamaica", "Jamaica", "USA", "Ecuador", "Netherlands", "France", "South Africa")
+
+#For each iteration of the Monte Carlo simulation, within a replicate() loop, select 3 runners representing the 3 medalists and check whether 
+#they are all from Jamaica. Repeat this simulation 10,000 times. Set the seed to 1 before running the loop.
+
+Question 1d: Calculate the probability that all the runners are from Jamaica.
+Answer: 0.0184
+
+
+
+#Question 2: Restaurant management
+#A restaurant manager wants to advertise that his lunch special offers enough choices to eat different meals every day of the year. He doesn't think 
+#his current special actually allows that number of choices, but wants to change his special if needed to allow at least 365 choices.
+#A meal at the restaurant includes 1 entree, 2 sides, and 1 drink. He currently offers a choice of 1 entree from a list of 6 options, a choice of 2 different 
+#sides from a list of 6 options, and a choice of 1 drink from a list of 2 options.
