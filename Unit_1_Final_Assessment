@@ -91,3 +91,98 @@ Task: Write a function that takes a number of side choices and returns the numbe
 
 Question 2e: What is the minimum number of side options required in order to generate more than 365 combinations?
 Answer: 7
+
+
+
+
+##Question 3:  Esophageal cancer and alcohol/tobacco use, part 1
+#Case-control studies help determine whether certain exposures are associated with outcomes such as developing cancer. The built-in dataset esoph contains data 
+#from a case-control study in France comparing people with esophageal cancer (cases, counted in ncases) to people without esophageal cancer (controls, counted in 
+#ncontrols) that are carefully matched on a variety of demographic and medical characteristics. The study compares alcohol intake in grams per day (alcgp) and 
+#tobacco intake in grams per day (tobgp) across cases and controls grouped by age range (agegp).
+
+
+#The dataset is available in base R and can be called with the variable name esoph: 
+head(esoph)
+
+#You may wish to use the tidyverse package:
+library(tidyverse)
+
+#Each row contains one group of the experiment. Each group has a different combination of age, alcohol consumption, and tobacco consumption. The number of cancer 
+#cases and number of controls (individuals without cancer) are reported for each group.
+
+
+#Question 3a: How many groups are in the study?
+Answer: 88
+Solution: nrow(esoph)
+
+
+#Question 3b: How many controls are there?
+#Save this value as all_controls for later problems.
+Answer: 200
+Solution: 
+all_controls <- sum(esoph$ncontrols)
+all_controls
+
+
+#Question 3c: How many controls are there?
+#Save this value as all_controls for later problems.
+Answer: 775
+Solution:
+all_cases <- sum(esoph$ncases)
+all_cases
+
+
+#Question 4
+
+#Question 4a: What is the probability that a subject in the highest alcohol consumption group is a cancer case?
+Answer: 0.672
+Solution:
+esoph %>%
+  filter(alcgp == "120+") %>%
+  summarize(ncases = sum(ncases), ncontrols = sum(ncontrols)) %>%
+  mutate(p_case = ncases / (ncases + ncontrols)) %>%
+  pull(p_case)
+
+
+#Question 4b: What is the probability that a subject in the lowest alcohol consumption group is a cancer case?
+Answer: 0.61
+Solution:
+esoph %>% filter(alcgp == "0-39g/day") %>%
+  summarize(sum_cases=sum(ncases), tot=sum(ncontrols)+sum(ncases), probability=sum_cases/tot)
+
+
+#Question 4c: Given that a person is a case, what is the probability that they smoke 10g or more a day?
+Answer: 0.61
+Solution:
+tob_cases <- esoph %>%
+  filter(tobgp != "0-9g/day") %>%
+  pull(ncases) %>%
+  sum()
+tob_cases/all_cases
+
+122 / 200 = 0.61
+
+
+#Question 4d: Given that a person is a control, what is the probability that they smoke 10g or more a day?
+Answer: 0.462
+Solution:
+tob_controls <- esoph %>%
+  filter(tobgp != "0-9g/day") %>%
+  pull(ncontrols) %>%
+  sum()
+
+tob_controls/all_controls
+
+450 / 975 = 0.462
+
+
+
+##Questions 5 and 6: Esophageal cancer and alcohol/tobacco use, part 2
+
+#Question 5:
+
+#Question 5a: For cases, what is the probability of being in the highest alcohol group?
+Answer: 0.225
+esoph %>% filter(alcgp == "120+") %>% summarize(sum_cases=sum(ncases))
+45/all_cases = 45 / 200 = 0.225
