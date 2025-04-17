@@ -146,7 +146,8 @@ esoph %>%
 
 
 #Question 4b: What is the probability that a subject in the lowest alcohol consumption group is a cancer case?
-Answer: 0.61
+#Round for three significantl digits, not the nearest thousandth
+Answer: 0.0699
 Solution:
 esoph %>% filter(alcgp == "0-39g/day") %>%
   summarize(sum_cases=sum(ncases), tot=sum(ncontrols)+sum(ncases), probability=sum_cases/tot)
@@ -185,4 +186,35 @@ tob_controls/all_controls
 #Question 5a: For cases, what is the probability of being in the highest alcohol group?
 Answer: 0.225
 esoph %>% filter(alcgp == "120+") %>% summarize(sum_cases=sum(ncases))
-45/all_cases = 45 / 200 = 0.225
+45 / all_cases = 45 / 200 = 0.225
+
+
+#Question 5b: For cases, what is the probability of being in the highest tobacco group?
+Answer: 0.155
+esoph %>% filter(tobgp == "30+") %>% summarize(sum_cases=sum(ncases))
+31 / all_cases = 31 / 200 = 0.155
+
+
+#Question 5c: For cases, what is the probability of being in the highest alcohol group and the highest tobacco group?
+Answer: 0.155
+esoph %>% filter(tobgp == "30+") %>% summarize(sum_cases=sum(ncases))
+10 / all_cases = 10 / 200 = 0.05
+
+
+#Question 5d: For cases, what is the probability of being in the highest alcohol group or the highest tobacco group?
+Answer: 0.33
+esoph %>% filter(alcgp == "120+" | tobgp =="30+") %>% summarize(sum_cases = sum(ncases))
+66 / all_cases = 66 / 200 = 0.66
+
+
+##Question 6
+
+#Question 6a: For controls, what is the probability of being in the highest alcohol group?
+#Round to 3 significant digits is different from rounding to the nearest thousandth
+Answer: 0.0284
+high_alcohol_controls <- esoph %>% filter(alcgp == "120+") %>% pull(ncontrols) %>% sum()
+high_alcohol_controls = 22
+22 / all_controls = 22 / 775 = 0.0284
+
+
+
