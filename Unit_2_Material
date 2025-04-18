@@ -187,5 +187,28 @@ plot(x, f_x)
 
 
 
+#Question 3: Convert act_scores to Z-scores. Recall from Data Visualization (the second course in this series) that to standardize values 
+#(convert values into Z-scores, that is, values distributed with a mean of 0 and standard deviation of 1), you must subtract the mean and 
+#then divide by the standard deviation. Use the mean and standard deviation of act_scores, not the original values used to generate random 
+#test scores.
+
+
+#Question 3a: What is the probability of a Z-score greater than 2 (2 standard deviations above the mean)?
+Work: z_scores <- (act_scores - mean(act_scores)) / sd(act_scores)
+mean(z_scores > 2)
+Answer: 0.0233
+
+
+#Question 3b: What ACT score value corresponds to 2 standard deviations above the mean (Z = 2)?
+Work: 2 * sd(act_scores) + mean(act_scores)
+Answer: 32.19
+
+
+#Question 3c: A Z-score of 2 corresponds roughly to the 97.5th percentile.
+#Use qnorm() to determine the 97.5th percentile of normally distributed data with the mean and standard deviation observed in act_scores.
+#What is the 97.5th percentile of act_scores?
+Work: qnorm(.975, mean(act_scores), sd(act_scores))
+Answer: 32.19
+
 
 
