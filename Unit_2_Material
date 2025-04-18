@@ -1,0 +1,54 @@
+#Lesson 1: Question 1 - Distribution of female heights 
+#Assume the distribution of female heights is approximated by a normal distribution with a mean of 64 inches and a standard deviation of 3 inches. If we pick 
+#a female at random, what is the probability that she is 5 feet or shorter?
+
+# Assign a variable 'female_avg' as the average female height.
+female_avg <- 64
+
+# Assign a variable 'female_sd' as the standard deviation for female heights.
+female_sd <- 3
+
+# Using variables 'female_avg' and 'female_sd', calculate the probability that a randomly selected female is shorter than 5 feet. Print this value to the console.
+
+pnorm(60, female_avg, female_sd)
+
+
+
+
+#Lesson 1: Question 2 - Distribution of female heights 
+Assume the distribution of female heights is approximated by a normal distribution with a mean of 64 inches and a standard deviation of 3 inches. If we pick 
+#a female at random, what is the probability that she is 6 feet or taller?
+
+
+# Assign a variable 'female_avg' as the average female height.
+female_avg <- 64
+
+# Assign a variable 'female_sd' as the standard deviation for female heights.
+female_sd <- 3
+
+# Using variables 'female_avg' and 'female_sd', calculate the probability that a randomly selected female is 6 feet or taller. Print this value to the console.
+
+1 - pnorm(72, female_avg, female_sd)
+
+
+
+
+#Lesson 1: Question 3 - Distribution of female heights 
+#Assume the distribution of female heights is approximated by a normal distribution with a mean of 64 inches and a standard deviation of 3 inches. If we pick a 
+#female at random, what is the probability that she is between 61 and 67 inches?
+
+# Assign a variable 'female_avg' as the average female height.
+female_avg <- 64
+
+# Assign a variable 'female_sd' as the standard deviation for female heights.
+female_sd <- 3
+
+# Using variables 'female_avg' and 'female_sd', calculate the probability that a randomly selected female is between the desired height range. Print this value to the console.
+
+#Use pnorm to define the probability that a randomly chosen woman will be shorter than 67 inches.
+female_upper_bound <- pnorm(67, female_avg, female_sd)
+female_upper_bound
+#Subtract the probability that a randomly chosen will be shorter than 61 inches.
+female_lower_bound <- female_upper_bound - pnorm(61, female_avg, female_sd)
+female_lower_bound
+
