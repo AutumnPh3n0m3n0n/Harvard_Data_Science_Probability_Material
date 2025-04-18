@@ -133,3 +133,59 @@ hist(highestIQ)
 
 
 
+
+________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+#Lesson 2: Question 1 - ACT Scores part 1
+
+#First we'll simulate an ACT test score dataset and answer some questions about it.
+
+#Set the seed to 16, then use rnorm() to generate a normal distribution of 10000 tests with a mean of 20.9 and standard deviation of 5.7. 
+#Save these values as act_scores. You'll be using this dataset throughout these four multi-part questions.
+
+#IMPORTANT NOTE! If you use R 3.6 or later, you will need to use the command format set.seed(x, sample.kind = "Rounding") instead of set.seed(x). 
+#Your R version will be printed at the top of the Console window when you start RStudio.
+
+set.seed(16, sample.kind = "Rounding")
+act_scores <- rnorm(10000, 20.9, 5.7)
+
+#Question 1a: What is the mean of act_scores?
+Work: mean(act_scores)
+Answer: 20.84
+
+
+#Question 1b: What is the standard devation of act_scores?
+Work: sd(act_scores)
+Answer: 5.68
+
+
+#Question 1c: A perfect score is 36 or greater (the maximum reported score is 36).
+#In act_scores, how many perfect scores are there out of 10,000 simulated tests?
+Work: sum(act_scores >= 36)
+Answer: 41
+
+
+#Question 1d: In act_scores, what is the probability of an ACT score greater than 30?
+Work: sum(act_scores > 30) / [total number of test takers] = 527 / 10000
+Answer: 0.0527
+
+
+#Question 1e: In act_scores, what is the probability of an ACT score less than or equal to 10?
+Work: sum(act_scores <= 10) / [total number of test takers] = 282 / 10000
+Answer: 0.0282
+
+
+
+
+#Question 2: Set x equal to the sequence of integers 1 to 36. Use dnorm to determine the value of the probability density function over x 
+#given a mean of 20.9 and standard deviation of 5.7; save the result as f_x. Plot x against f_x.
+#Which of the following plots is correct?
+
+x <- seq(1, 36)
+f_x <- dnorm(x, mean = 20.9, sd = 5.7)
+plot(x, f_x)
+
+
+
+
+
+
