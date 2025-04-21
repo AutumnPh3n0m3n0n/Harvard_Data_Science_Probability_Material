@@ -212,3 +212,18 @@ Answer: 32.19
 
 
 
+
+#Question 4: In this 4-part question, you will write a function to create a CDF for ACT scores.
+#Write a function that takes a value and produces the probability of an ACT score less than or equal to that value (the CDF). Apply this 
+#function to the range 1 to 36.
+
+
+#Question 4a: What is the minimum integer score such that the probability of that score or lower is at least .95?
+Answer: 31
+
+
+#Question 4b: Use qnorm() to determine the expected 95th percentile, the value for which the probability of receiving that score or lower is 
+#0.95, given a mean score of 20.9 and standard deviation of 5.7.
+Answer: 30.275
+
+
