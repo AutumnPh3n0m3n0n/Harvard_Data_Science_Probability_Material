@@ -219,11 +219,29 @@ Answer: 32.19
 
 
 #Question 4a: What is the minimum integer score such that the probability of that score or lower is at least .95?
+Work: ceiling(qnorm(0.95, mean(act_scores), sd(act_scores)))
 Answer: 31
 
 
 #Question 4b: Use qnorm() to determine the expected 95th percentile, the value for which the probability of receiving that score or lower is 
 #0.95, given a mean score of 20.9 and standard deviation of 5.7.
+Work: qnorm(0.95, 20.9, 5.7)
 Answer: 30.275
+
+
+#Question 4c: In what percentile is a score of 26?
+#As discussed in the Data Visualization course, we can use quantile() to determine sample quantiles from the data.
+#Make a vector containing the quantiles for p <- seq(0.01, 0.99, 0.01), the 1st through 99th percentiles of the act_scores data. Save these 
+#as sample_quantiles.
+Work: sample_quantiles <- seq(0.01, 0.99, 0.01)
+quantile(act_scores, sample_quantiles)
+Answer: 82
+
+
+#Question 4d: Make a corresponding set of theoretical quantiles using qnorm() over the interval p <- seq(0.01, 0.99, 0.01) with mean 20.9 
+#and standard deviation 5.7. Save these as theoretical_quantiles. Make a QQ-plot graphing sample_quantiles on the y-axis versus 
+#theoretical_quantiles on the x-axis.
+Work: theoretical_quantiles <- qnorm(sample_quantiles, 20.9, 5.7)
+qqplot(y=sample_quantiles, x=theoretical_quantiles)
 
 
