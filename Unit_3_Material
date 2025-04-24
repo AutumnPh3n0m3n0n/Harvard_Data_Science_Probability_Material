@@ -1,1 +1,21 @@
+#An American roulette wheel has 18 red, 18 black, and 2 green pockets. Each red and black pocket is associated with a number from 1 to 36. The two remaining green slots feature
+#"0" and "00". Players place bets on which pocket they think a ball will land in after the wheel is spun. Players can bet on a specific number (0, 00, 1-36) or color (red, black, 
+#or green).
+
+
+#Lesson 1: Question 1: What are the chances that the ball lands in a green pocket?
+
+# The variables `green`, `black`, and `red` contain the number of pockets for each color
+green <- 2
+black <- 18
+red <- 18
+
+# Assign a variable `p_green` as the probability of the ball landing in a green pocket
+p_green <- green / (green + black + red)
+
+# Print the variable `p_green` to the console
+p_green
+
+
+
 
